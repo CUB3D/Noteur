@@ -21,12 +21,16 @@ def printIndexed(list):
 mode = sys.argv[1]
 
 if mode == "create":
-    name = input("New list name: ")
-    file = open(name + ".lst", "w")
-    file.close()
-    file = open("Lists.lst", "a")
-    file.write(name + "\n")
-    file.close()
+    if len(sys.argv) < 3:
+        print("Usage: noteur create <name>")
+        sys.exit(0)
+    else:
+        name = sys.argv[2]
+        file = open(name + ".lst", "w")
+        file.close()
+        file = open("Lists.lst", "a")
+        file.write(name + "\n")
+        file.close()
     
 elif mode == "show":
     if len(sys.argv) < 3:
