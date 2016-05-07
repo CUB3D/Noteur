@@ -70,5 +70,18 @@ elif mode == "remove":
             print("Removed")
         else:
             print("Aborted")
-
-        
+elif mode == "strike":
+    if len(sys.argv) < 3:
+        print("Usage: noteur strike <list> id")
+        sys.exit(0)
+    else:
+        name = sys.argv[2]
+        id = int(sys.argv[3]) - 1
+        file = open(name + ".lst", "r")
+        content = [x for x in file]
+        content[id] = "\u0336".join(content[id])
+        file.close()
+        file = open(name + ".lst", "w")
+        for line in content:
+            file.write(line)
+        file.close()
